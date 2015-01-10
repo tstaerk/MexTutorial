@@ -1,0 +1,18 @@
+<?php
+
+// circlextension draws a circle with a radius of 50 once it encounters 
+// the tag <circle /> on a mediawiki page
+
+$wgExtensionFunctions[] = "wfcirclextension";
+
+function wfcirclextension()
+{
+  global $wgParser;
+  $wgParser->setHook("circle", "circlehtml");
+}
+
+function circlehtml($code, $argv)
+{
+  $result="<svg><circle r=50 /></svg>";
+  return $result;
+}
